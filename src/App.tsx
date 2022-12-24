@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import build3DHierarchy from "./build3DHierarchy";
+import { testTestHierarchy } from "./build3DHierarchy";
 
 const DEBUG_PARTITIONS = true;
 const DEBUG__SELECTED_PARENT = true;
@@ -26,6 +27,10 @@ function App() {
       console.log("--- DEBUG__SELECTED_PARENT Report end ---");
     }
   }, [selectedParent]);
+
+  useEffect(() => {
+    testTestHierarchy();
+  }, []);
 
   switch (step) {
     case "template":

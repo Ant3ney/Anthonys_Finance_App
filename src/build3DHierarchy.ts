@@ -1,21 +1,75 @@
-export default function build3DHierarchy(twoDHierarchy: any[]) {
-  const idMapping = twoDHierarchy.reduce((acc: any, el: any, i: any) => {
-    acc[el.id] = i;
-    return acc;
-  }, {});
+export const testTestHierarchy = () => {
+  const twoDHierarchy = [
+    {
+      id: "0.792254105018136",
+      parentID: null,
+      children: null,
+      percentage: "10",
+      amount: "",
+      name: "Self",
+    },
+    {
+      id: "0.20313799996162119",
+      parentID: null,
+      children: null,
+      percentage: "10",
+      amount: "",
+      name: "Buffer",
+    },
+    {
+      id: "0.08307110312610577",
+      parentID: null,
+      children: null,
+      percentage: "10",
+      amount: "",
+      name: "Subscriptions",
+    },
+    {
+      id: "0.40633586480055306",
+      parentID: null,
+      children: [
+        "0.8237164838331994",
+        "0.526509193739279",
+        {
+          id: "0.8237164838331994",
+          parentID: "0.40633586480055306",
+          children: null,
+          percentage: "",
+          amount: "57",
+          name: "Debt to Self",
+        },
+        {
+          id: "0.526509193739279",
+          parentID: "0.40633586480055306",
+          children: null,
+          percentage: "",
+          amount: "678",
+          name: "Credit Card",
+        },
+      ],
+      percentage: "20",
+      amount: "",
+      name: "Debt",
+    },
+    {
+      id: "0.8237164838331994",
+      parentID: "0.40633586480055306",
+      children: null,
+      percentage: "",
+      amount: "57",
+      name: "Debt to Self",
+    },
+    {
+      id: "0.526509193739279",
+      parentID: "0.40633586480055306",
+      children: null,
+      percentage: "",
+      amount: "678",
+      name: "Credit Card",
+    },
+  ];
 
-  let root;
-  twoDHierarchy.forEach((el: any) => {
-    // Handle the root element
-    if (el.parentID === null) {
-      root = el;
-      return;
-    }
-    // Use our mapping to locate the parent element in our data array
-    const parentEl = twoDHierarchy[idMapping[el.parentID]];
-    // Add our current el to its parent's `children` array
-    parentEl.children = [...(parentEl.children || []), el];
-  });
+  console.log("Transformed hierarchy: ", build3DHierarchy(twoDHierarchy));
+};
 
-  return twoDHierarchy;
-}
+export default function build3DHierarchy(twoDHierarchy: any[]) {}
