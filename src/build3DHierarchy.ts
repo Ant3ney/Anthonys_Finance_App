@@ -72,4 +72,8 @@ export const testTestHierarchy = () => {
   console.log("Transformed hierarchy: ", build3DHierarchy(twoDHierarchy));
 };
 
-export default function build3DHierarchy(twoDHierarchy: any[]) {}
+export default function build3DHierarchy(twoDHierarchy: any[]) {
+  function sortTopLevel(parrent: any, nodes: any) {}
+  function getSortedParrent(parrent: any, allNodes: any) {}
+  function getSortedNodes(node: any) {}
+}
