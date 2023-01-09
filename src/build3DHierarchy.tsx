@@ -69,7 +69,8 @@ const twoDHierarchy = [
 ];
 
 export const testTestHierarchy = () => {
-  console.log("Transformed hierarchy: ", build3DHierarchy(twoDHierarchy));
+  let new2D = JSON.parse(JSON.stringify(twoDHierarchy));
+  console.log("Transformed hierarchy: ", build3DHierarchy(new2D));
 };
 
 export default function build3DHierarchy(twoDHierarchy: any[]) {
@@ -89,7 +90,6 @@ export default function build3DHierarchy(twoDHierarchy: any[]) {
         typeof node.children[0] === "string"
       ) {
         const inValidChildren = makeAllInvalidChildrenStrings(node.children);
-        console.log("inValidChildren", inValidChildren);
         const replacementNode = getParentWithChildren(node, twoDHierarchy);
         sortedNodes = getSortedNodeButReplace(node, replacementNode);
 
@@ -162,7 +162,6 @@ export default function build3DHierarchy(twoDHierarchy: any[]) {
     return correctInvalidChild;
   }
   function getSortedNodesWithoutChildren(nodes: Node[], children: string[]) {
-    console.log("intermediate sorted nodes:", nodes);
     let noChildrenNodes = [];
 
     for (let i = 0; i < nodes.length; i++) {
@@ -170,7 +169,6 @@ export default function build3DHierarchy(twoDHierarchy: any[]) {
       const node = nodes[i];
       for (let j = 0; j < children.length; j++) {
         const childID = children[j];
-        console.log("node", node);
         if (childID === node.id) {
           nodeIsChild = true;
         }
@@ -182,4 +180,64 @@ export default function build3DHierarchy(twoDHierarchy: any[]) {
   return sortTopLevel(null as any, twoDHierarchy);
 }
 
-export function TestBuildHierarchy() {}
+export function TestHierarchy({}) {
+  let new2DHier = JSON.parse(JSON.stringify(twoDHierarchy));
+  let hier = build3DHierarchy(new2DHier);
+  const income: number = 600;
+  return <ul>{<TestBuildHierarchy hier={hier} income={income} />}</ul>;
+}
+
+export function TestBuildHierarchy({ hier, newRanKey, income }: any) {
+  const ranKey = newRanKey || Math.round(Math.random() * 100);
+  console.log("hier:", hier);
+  const totalAmount =
+    hier[0].amount !== ""
+      ? (() => {
+          let total = 0;
+          for (let i = 0; i < hier.length; i++) {
+            const node = hier[i];
+            total += +node.amount;
+          }
+          return total;
+        })()
+      : null;
+  console.log("totalAmount:", totalAmount);
+  return (
+    <>
+      {hier.map((node: any, i: number) => {
+        let amount = null;
+        if (node.percentage !== "")
+          amount = Math.ceil(income * (+node.percentage / 100));
+        console.log("amount", amount, "node.percentage:", node.percentage);
+        let partionedAmountFromAmount = null;
+        if (totalAmount) {
+          let percentageAmount = node.amount / totalAmount;
+          console.log("percentageAmount:", percentageAmount);
+          partionedAmountFromAmount = Math.ceil(income * percentageAmount);
+        }
+
+        if (node.children) {
+          return (
+            <li key={ranKey + i}>
+              name: {node.name}
+              {amount ? ` $${amount}` : " error"}
+              <ul key={ranKey}>
+                <TestBuildHierarchy
+                  newRanKey={ranKey + 1}
+                  hier={node.children}
+                  income={amount}
+                />
+              </ul>
+            </li>
+          );
+        }
+        return (
+          <li key={ranKey + i}>
+            name: {node.name}{" "}
+            {amount ? ` $${amount}` : ` $${partionedAmountFromAmount}`}
+          </li>
+        );
+      })}
+    </>
+  );
+}
