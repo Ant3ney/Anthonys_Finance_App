@@ -82,7 +82,8 @@ export function TestHierarchy({}) {
   let new2DHier = JSON.parse(JSON.stringify(twoDHierarchy));
   let hier = build3DHierarchy(new2DHier);
   const income: number = 600;
-  return <ul>{<BuildHierarchy threeDHierachy={hier} income={income} />}</ul>;
+  if (!hier) return <div>Error hier is {hier}</div>;
+  return <ul>{<BuildHierarchy threeDHierarchy={hier} income={income} />}</ul>;
 }
 
 export function BuildHierarchy({ threeDHierarchy, newRanKey, income }: any) {
@@ -122,7 +123,7 @@ export function BuildHierarchy({ threeDHierarchy, newRanKey, income }: any) {
               <ul key={ranKey}>
                 <BuildHierarchy
                   newRanKey={ranKey + 1}
-                  hier={node.children}
+                  threeDHierarchy={node.children}
                   income={amount}
                 />
               </ul>

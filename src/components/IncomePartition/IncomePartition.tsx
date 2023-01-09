@@ -35,8 +35,8 @@ function IncomePartition({}: any) {
     case "template":
       return (
         <div>
+          <TestHierarchy />
           <div>
-            <TestHierarchy />
             <label>Template Name</label>
             <input
               onChange={(event: any) => {

@@ -177,67 +177,7 @@ export default function build3DHierarchy(twoDHierarchy: any[]) {
     }
     return noChildrenNodes;
   }
-  return sortTopLevel(null as any, twoDHierarchy);
+  const preReturnedSorted = sortTopLevel(null as any, twoDHierarchy);
+  console.log("preReturnedSorted:", preReturnedSorted);
+  return preReturnedSorted;
 }
-
-/* export function TestHierarchy({}) {
-  let new2DHier = JSON.parse(JSON.stringify(twoDHierarchy));
-  let hier = build3DHierarchy(new2DHier);
-  const income: number = 600;
-  return <ul>{<TestBuildHierarchy hier={hier} income={income} />}</ul>;
-}
-
-export function TestBuildHierarchy({ hier, newRanKey, income }: any) {
-  const ranKey = newRanKey || Math.round(Math.random() * 100);
-  console.log("hier:", hier);
-  const totalAmount =
-    hier[0].amount !== ""
-      ? (() => {
-          let total = 0;
-          for (let i = 0; i < hier.length; i++) {
-            const node = hier[i];
-            total += +node.amount;
-          }
-          return total;
-        })()
-      : null;
-  console.log("totalAmount:", totalAmount);
-  return (
-    <>
-      {hier.map((node: any, i: number) => {
-        let amount = null;
-        if (node.percentage !== "")
-          amount = Math.ceil(income * (+node.percentage / 100));
-        console.log("amount", amount, "node.percentage:", node.percentage);
-        let partionedAmountFromAmount = null;
-        if (totalAmount) {
-          let percentageAmount = node.amount / totalAmount;
-          console.log("percentageAmount:", percentageAmount);
-          partionedAmountFromAmount = Math.ceil(income * percentageAmount);
-        }
-
-        if (node.children) {
-          return (
-            <li key={ranKey + i}>
-              name: {node.name}
-              {amount ? ` $${amount}` : " error"}
-              <ul key={ranKey}>
-                <TestBuildHierarchy
-                  newRanKey={ranKey + 1}
-                  hier={node.children}
-                  income={amount}
-                />
-              </ul>
-            </li>
-          );
-        }
-        return (
-          <li key={ranKey + i}>
-            name: {node.name}{" "}
-            {amount ? ` $${amount}` : ` $${partionedAmountFromAmount}`}
-          </li>
-        );
-      })}
-    </>
-  );
-} */
