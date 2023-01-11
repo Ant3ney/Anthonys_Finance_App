@@ -28,6 +28,10 @@ function IncomePartition({}: any) {
   }, [selectedParent]);
 
   useEffect(() => {
+    setPartitions(partitions);
+  }, [partitions]);
+
+  useEffect(() => {
     testTestHierarchy();
   }, []);
 
@@ -35,8 +39,11 @@ function IncomePartition({}: any) {
     case "template":
       return (
         <div>
-          <TestHierarchy />
           <div>
+            <h1>Load Template</h1>
+          </div>
+          <div>
+            <h1>Create Template</h1>
             <label>Template Name</label>
             <input
               onChange={(event: any) => {
