@@ -28,7 +28,8 @@ function IncomePartition({}: any) {
   }, [selectedParent]);
 
   useEffect(() => {
-    setPartitions(partitions);
+    if (!window?.localStorage) return;
+    window?.localStorage;
   }, [partitions]);
 
   useEffect(() => {
