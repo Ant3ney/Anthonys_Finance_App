@@ -1,7 +1,12 @@
 import build3DHierarchy from "./build3DHierarchy";
+import { post400 } from "./partitionTrees";
+
+const HARD_INCOME = 425;
+
 function PartitionTree({ income, twoDHierarchy }: any) {
   const deepCopy2DHierarchy = JSON.parse(JSON.stringify(twoDHierarchy));
   let threeDHierachy = build3DHierarchy(deepCopy2DHierarchy);
+
   return (
     <ul>
       {<BuildHierarchy threeDHierachy={threeDHierachy} income={income} />}
@@ -10,78 +15,10 @@ function PartitionTree({ income, twoDHierarchy }: any) {
 }
 
 export function TestHierarchy({}) {
-  const twoDHierarchy = [
-    {
-      id: "0.792254105018136",
-      parentID: null,
-      children: null,
-      percentage: "10",
-      amount: "",
-      name: "Self",
-    },
-    {
-      id: "0.20313799996162119",
-      parentID: null,
-      children: null,
-      percentage: "10",
-      amount: "",
-      name: "Buffer",
-    },
-    {
-      id: "0.08307110312610577",
-      parentID: null,
-      children: null,
-      percentage: "10",
-      amount: "",
-      name: "Subscriptions",
-    },
-    {
-      id: "0.40633586480055306",
-      parentID: null,
-      children: [
-        "0.8237164838331994",
-        "0.526509193739279",
-        {
-          id: "0.8237164838331994",
-          parentID: "0.40633586480055306",
-          children: null,
-          percentage: "",
-          amount: "57",
-          name: "Debt to Self",
-        },
-        {
-          id: "0.526509193739279",
-          parentID: "0.40633586480055306",
-          children: null,
-          percentage: "",
-          amount: "678",
-          name: "Credit Card",
-        },
-      ],
-      percentage: "20",
-      amount: "",
-      name: "Debt",
-    },
-    {
-      id: "0.8237164838331994",
-      parentID: "0.40633586480055306",
-      children: null,
-      percentage: "",
-      amount: "57",
-      name: "Debt to Self",
-    },
-    {
-      id: "0.526509193739279",
-      parentID: "0.40633586480055306",
-      children: null,
-      percentage: "",
-      amount: "678",
-      name: "Credit Card",
-    },
-  ];
+  const twoDHierarchy = post400;
   let new2DHier = JSON.parse(JSON.stringify(twoDHierarchy));
   let hier = build3DHierarchy(new2DHier);
-  const income: number = 600;
+  const income: number = HARD_INCOME;
   if (!hier) return <div>Error hier is {hier}</div>;
   return <ul>{<BuildHierarchy threeDHierarchy={hier} income={income} />}</ul>;
 }
