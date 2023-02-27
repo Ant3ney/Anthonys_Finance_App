@@ -1,6 +1,6 @@
 # Anthony's Financial App
 
-An app made by me to quickly handle financial tasks that I often encounter
+An app made by me to quickly handle financial tasks that I often encounter.
 
 ## Income Partitioner
 
