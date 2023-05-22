@@ -54,7 +54,7 @@ function IncomePartition({}: any) {
     testTestHierarchy();
   }, []);
 
-  return <TestHierarchy />;
+  /* return <TestHierarchy />; */
 
   switch (step) {
     case "template":
