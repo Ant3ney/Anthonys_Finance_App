@@ -5,7 +5,7 @@ export default [
     children: null,
     percentage: "1",
     amount: "",
-    name: "Dogy",
+    name: "Test value",
   },
   {
     id: "0.051854195932672154",
