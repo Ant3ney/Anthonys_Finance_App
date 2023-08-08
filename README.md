@@ -16,3 +16,8 @@ How to use
 8. Type in income
 
 ## Doordash Targeter
+
+## Important Dependencies
+
+react-progress-form
+use-persisted-state
