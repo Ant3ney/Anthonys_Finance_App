@@ -15,4 +15,6 @@ How to use
 7. Add template name
 8. Type in income
 
-## Doordash Targeter
+## Doordash Targeter (Coming Soon)
+
+Find out how much you need to make to reach your target amount.
