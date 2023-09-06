@@ -28,19 +28,11 @@ export default [
     parentID: null,
     children: [
       {
-        id: "0.6780912334948321",
-        parentID: "0.8284784560816267",
-        children: null,
-        percentage: "",
-        amount: "75",
-        name: "Debt to self",
-      },
-      {
         id: "0.07895224434880621",
         parentID: "0.8284784560816267",
         children: null,
         percentage: "",
-        amount: "530",
+        amount: "525",
         name: "Debt - Active loan",
       },
       {
@@ -48,7 +40,7 @@ export default [
         parentID: "0.8284784560816267",
         children: null,
         percentage: "",
-        amount: "205",
+        amount: "348",
         name: "Debt - Credit Card",
       },
       {
@@ -56,7 +48,7 @@ export default [
         parentID: "0.8284784560816267",
         children: null,
         percentage: "",
-        amount: "58",
+        amount: "56",
         name: "Debt - Subscriptions and Buffer",
       },
     ],
