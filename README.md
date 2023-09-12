@@ -2,6 +2,10 @@
 
 An app made by me to quickly handle financial tasks that I often encounter.
 
+## Disclaimer.
+
+This app requires you modify the code in order to use it. I have not made it user friendly yet.
+
 ## Income Partitioner
 
 How to use
