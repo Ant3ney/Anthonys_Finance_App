@@ -1,8 +1,8 @@
 import build3DHierarchy from "./build3DHierarchy";
 import { summer2023 } from "./partitionTrees";
-import testing from "./partitionTrees/testing";
+import fall2023 from "./partitionTrees/fall2023";
 
-const HARD_INCOME = 704;
+const HARD_INCOME = 1610;
 
 function PartitionTree({ income, twoDHierarchy }: any) {
   const deepCopy2DHierarchy = JSON.parse(JSON.stringify(twoDHierarchy));
@@ -16,7 +16,7 @@ function PartitionTree({ income, twoDHierarchy }: any) {
 }
 
 export function TestHierarchy({}) {
-  const twoDHierarchy = testing;
+  const twoDHierarchy = fall2023;
   let new2DHier = JSON.parse(JSON.stringify(twoDHierarchy));
   let hier = build3DHierarchy(new2DHier);
   const income: number = HARD_INCOME;
