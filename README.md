@@ -17,7 +17,7 @@ How to use
 
 ## Doordash Targeter
 
-Will let you know how much / long to work for when doing doordash.
+Will let you know how much / long to work for when doing Doordash.
 
 ## Important Dependencies
 
