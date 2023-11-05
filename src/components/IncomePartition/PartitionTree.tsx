@@ -1,7 +1,7 @@
 import build3DHierarchy from "./build3DHierarchy";
 import humboldt_fall_2023 from "./partitionTrees/humboldt_fall_2023";
 
-const HARD_INCOME = 181.33;
+const HARD_INCOME = 178.57;
 
 function PartitionTree({ income, twoDHierarchy }: any) {
   const deepCopy2DHierarchy = JSON.parse(JSON.stringify(twoDHierarchy));
