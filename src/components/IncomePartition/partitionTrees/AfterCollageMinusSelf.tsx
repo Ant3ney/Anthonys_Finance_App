@@ -1,13 +1,5 @@
 export default [
   {
-    id: "0.6227435273620425",
-    parentID: null,
-    children: null,
-    percentage: "10",
-    amount: "",
-    name: "Self",
-  },
-  {
     id: "0.6226435273620425",
     parentID: null,
     children: null,
