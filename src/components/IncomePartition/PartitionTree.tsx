@@ -2,7 +2,7 @@ import build3DHierarchy from "./build3DHierarchy";
 import { summer2023 } from "./partitionTrees";
 import CurrentPartition from "./partitionTrees/AfterCollage";
 
-const HARD_INCOME = ;
+const HARD_INCOME = 20;
 
 function PartitionTree({ income, twoDHierarchy }: any) {
   const deepCopy2DHierarchy = JSON.parse(JSON.stringify(twoDHierarchy));
