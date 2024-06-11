@@ -1,6 +1,6 @@
 import build3DHierarchy from "./build3DHierarchy";
 import { summer2023 } from "./partitionTrees";
-import fall2023 from "./partitionTrees/fall2023";
+import CurrentPartition from "./partitionTrees/AfterCollage";
 
 const HARD_INCOME = 1610;
 
@@ -16,7 +16,7 @@ function PartitionTree({ income, twoDHierarchy }: any) {
 }
 
 export function TestHierarchy({}) {
-  const twoDHierarchy = fall2023;
+  const twoDHierarchy = CurrentPartition;
   let new2DHier = JSON.parse(JSON.stringify(twoDHierarchy));
   let hier = build3DHierarchy(new2DHier);
   const income: number = HARD_INCOME;
