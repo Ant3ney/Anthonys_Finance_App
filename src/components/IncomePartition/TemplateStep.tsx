@@ -16,7 +16,7 @@ function TemplateStep({
                 <button
                   onClick={() => {
                     setThreeDPartition(partition);
-                    setStep("displayTree");
+                    setStep("show");
                   }}
                 >
                   Load
