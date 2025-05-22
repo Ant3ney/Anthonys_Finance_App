@@ -2,7 +2,7 @@ import build3DHierarchy from "./build3DHierarchy";
 import { summer2023 } from "./partitionTrees";
 import CurrentPartition from "./partitionTrees/AfterCollage";
 
-const HARD_INCOME = 10;
+const HARD_INCOME = 10; // TODO: have this file replace use partition
 
 function PartitionTree({ income, twoDHierarchy }: any) {
   const deepCopy2DHierarchy = JSON.parse(JSON.stringify(twoDHierarchy));
@@ -67,13 +67,14 @@ export function BuildHierarchy({ threeDHierarchy, newRanKey, income }: any) {
               </ul>
             </li>
           );
+        } else {
+          return (
+            <li key={ranKey + i}>
+              name: {node.name}{" "}
+              {amount ? ` $${amount}` : ` $${partionedAmountFromAmount}`}
+            </li>
+          );
         }
-        return (
-          <li key={ranKey + i}>
-            name: {node.name}{" "}
-            {amount ? ` $${amount}` : ` $${partionedAmountFromAmount}`}
-          </li>
-        );
       })}
     </>
   );

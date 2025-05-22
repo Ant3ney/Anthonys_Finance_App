@@ -9,6 +9,7 @@ function HierarchyStep({
   setAllPartitions,
   threeDPartition,
   templateName,
+  setCurrentPartition,
 }: any) {
   return (
     <div>
@@ -33,7 +34,7 @@ function HierarchyStep({
           </div>
         );
       })}
-      <button
+      {/* <button
         onClick={() => {
           const buildPartitions: any = {};
           buildPartitions.partitions = build3DHierarchy(partitions);
@@ -44,11 +45,20 @@ function HierarchyStep({
         }}
       >
         Build
-      </button>
+      </button> */}
       <button
         onClick={() => {
+          const buildPartitions: any = {};
+          buildPartitions.threeDPartition = build3DHierarchy(partitions);
+          console.log(
+            "HierarchyStep.tsx buildPartitions.ThreeDHierarchy: ",
+            buildPartitions.threeDPartition
+          );
+          buildPartitions.name = templateName;
           const allPartitionsBuffer = JSON.parse(JSON.stringify(allPartitions));
-          allPartitionsBuffer.push(threeDPartition);
+          allPartitionsBuffer.push(buildPartitions);
+          setThreeDPartition(build3DHierarchy(partitions));
+          setCurrentPartition(buildPartitions);
           setAllPartitions(allPartitionsBuffer);
         }}
       >

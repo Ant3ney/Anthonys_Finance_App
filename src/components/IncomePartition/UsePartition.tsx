@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { TestHierarchy, BuildHierarchy } from "./PartitionTree";
 
-function UseReactComponent({ threeDPartition, setStep }: any) {
+function UseReactComponent({ currentPartition, setStep }: any) {
   const [income, setIncome] = useState<any>(5);
   console.log(income);
   return (
@@ -19,7 +19,7 @@ function UseReactComponent({ threeDPartition, setStep }: any) {
       <ul>
         {
           <BuildHierarchy
-            threeDHierarchy={threeDPartition.partitions}
+            threeDHierarchy={currentPartition.threeDPartition}
             income={income}
           />
         }

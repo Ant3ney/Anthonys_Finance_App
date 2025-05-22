@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 
-import build3DHierarchy, { testTestHierarchy } from "./build3DHierarchy";
 import ChildStep from "./ChildStep";
 import HierarchyStep from "./HierarchyStep";
 import PartitionsStep from "./PartitionsStep";
-import EditAllPartitions from "./EditAllPartitions";
 import UsePartition from "./UsePartition";
-import { TestHierarchy, BuildHierarchy } from "./PartitionTree";
 import TemplateStep from "./TemplateStep";
 
 const DEBUG_PARTITIONS = false;
@@ -16,9 +13,11 @@ function IncomePartition({}: any) {
   const [step, setStep] = useState<string>("template");
   const [partitions, setPartitions] = useState<any>([]);
   const [selectedParent, setSelectedParent] = useState<any>(null);
-  const [income, setIncome] = useState<any>(null);
   const [threeDPartition, setThreeDPartition] = useState<any>(null);
-  const [allPartitions, setAllPartitions] = useState<any[]>([]);
+  const [allPartitions, setAllPartitions] = useState<Partition[]>([]);
+  const [currentPartition, setCurrentPartition] = useState<Partition | null>(
+    null
+  );
 
   useEffect(() => {
     if (window?.localStorage) {
@@ -28,6 +27,14 @@ function IncomePartition({}: any) {
       setAllPartitions(allPartitions);
     }
   }, []);
+
+  // useEffect(() => {
+  //   const threeDPartitionBuffer = JSON.parse(JSON.stringify(threeDPartition));
+  //   setCurrentPartition({
+  //     threeDPartition: threeDPartitionBuffer,
+  //     name: templateName,
+  //   });
+  // }, [threeDPartition]);
 
   useEffect(() => {
     if (DEBUG_PARTITIONS) {
@@ -46,25 +53,13 @@ function IncomePartition({}: any) {
 
   useEffect(() => {
     if (!window?.localStorage || allPartitions.length <= 0) return;
-    console.log("Saving", allPartitions);
     window?.localStorage.setItem(
       "allPartitions",
       JSON.stringify(allPartitions)
     );
-    console.log(window?.localStorage.getItem("allPartitions"));
   }, [allPartitions]);
 
-  useEffect(() => {
-    testTestHierarchy();
-  }, []);
-
-  //return <TestHierarchy />;
-
   switch (step) {
-    // case "view":
-    //   return (
-    //     <EditAllPartitions allPartitions={allPartitions} setStep={setStep} />
-    //   );
     case "template":
       return (
         <TemplateStep
@@ -72,6 +67,7 @@ function IncomePartition({}: any) {
           allPartitions={allPartitions}
           setTemplateName={setTemplateName}
           setStep={setStep}
+          setCurrentPartition={setCurrentPartition}
         />
       );
     case "partitions":
@@ -93,6 +89,7 @@ function IncomePartition({}: any) {
           allPartitions={allPartitions}
           setAllPartitions={setAllPartitions}
           templateName={templateName}
+          setCurrentPartition={setCurrentPartition}
         />
       );
     case "child":
@@ -106,11 +103,16 @@ function IncomePartition({}: any) {
       );
     case "show":
       return (
-        <UsePartition threeDPartition={threeDPartition} setStep={setStep} />
+        <UsePartition currentPartition={currentPartition} setStep={setStep} />
       );
     default:
       return <div>Error in income portioner</div>;
   }
+}
+
+interface Partition {
+  threeDPartition: any[];
+  name: string[];
 }
 
 export default IncomePartition;
