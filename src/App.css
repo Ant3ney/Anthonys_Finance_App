@@ -5,3 +5,30 @@
 .flex {
   display: flex;
 }
+html {
+	background-color: #020202;
+	color: white;
+}
+
+
+.mt-2 {
+	margin-top: 2rem;
+}
+.container {
+	width: 100%;
+	padding: 0 40px;
+}
+
+button {
+	background-color: #d7baf1;
+	color: #020202;
+	border-radius: 16px;
+	border: 0;
+	width: 100%;
+	padding: 30px;
+	font-size: 28px;
+	font-weight: 100;
+
+}
+
+

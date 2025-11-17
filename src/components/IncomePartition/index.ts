@@ -1,2 +1,4 @@
-export { default } from "./IncomePartition";
-export { testTestHierarchy } from "./build3DHierarchy";
+import IncomePartition from './views'
+export {  PartitionContextProvider } from './partitionContext'
+export { default as partitionContext } from './partitionContext'
+export default IncomePartition;

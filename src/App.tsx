@@ -1,10 +1,13 @@
+import { PartitionContextProvider }  from "components/IncomePartition";
+import IncomePartition from "components/IncomePartition"
+import ElementsStyling from "components/ElementsStyling"
 import "./App.css";
-import IncomePartition from "components/IncomePartition";
 
 function App() {
   return (
     <div>
-      <IncomePartition />
+    	<ElementsStyling />
+    	<IncomePartition/>
     </div>
   );
 }
