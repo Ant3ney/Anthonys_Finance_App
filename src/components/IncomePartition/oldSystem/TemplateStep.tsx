@@ -3,7 +3,6 @@ function TemplateStep({
   setTemplateName,
   setStep,
   allPartitions,
-  setCurrentPartition,
 }: any) {
   return (
     <div>
@@ -17,8 +16,6 @@ function TemplateStep({
                 <button
                   onClick={() => {
                     setThreeDPartition(partition);
-                    setCurrentPartition(partition);
-                    console.log("Template step partition: ", partition);
                     setStep("show");
                   }}
                 >
