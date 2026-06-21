@@ -8,7 +8,6 @@ function HierarchyStep({
   allPartitions,
   setAllPartitions,
   threeDPartition,
-  templateName,
 }: any) {
   return (
     <div>
@@ -35,11 +34,8 @@ function HierarchyStep({
       })}
       <button
         onClick={() => {
-          const buildPartitions: any = {};
-          buildPartitions.partitions = build3DHierarchy(partitions);
-          buildPartitions.name = templateName;
+          const buildPartitions = build3DHierarchy(partitions);
           console.log("buildPartitions:", buildPartitions);
-
           setThreeDPartition(buildPartitions);
         }}
       >
@@ -53,13 +49,6 @@ function HierarchyStep({
         }}
       >
         Save Template
-      </button>
-      <button
-        onClick={() => {
-          setStep("show");
-        }}
-      >
-        Use
       </button>
     </div>
   );
